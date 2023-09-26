@@ -5,12 +5,13 @@ import{BiLike} from "react-icons/bi"
 import{ImEye} from "react-icons/im"
 
 export const Product = ({ data }: any) => {
-  const { productName, price, productImage, secImage, qtty } = data;
+  const { productName, price, productImage, thumbnail_image, Catergory,qtty,  Quantity, Description, NumReviews,
+  Rating, Size } = data;
   const { addToCart, cartItems, removeFromCart } = useContext(ShopContext);
   const [isImage, setIsImage] = useState(productImage);
 
   const handMouseDown = () => {
-    setIsImage(secImage);
+    setIsImage(thumbnail_image);
   };
 
   const handMouseLeave = () => {
@@ -29,7 +30,7 @@ export const Product = ({ data }: any) => {
             free shipping
             <img src={isImage} className="img-aut0 image-style" />
           </div>
-          <div className="description">
+          <li className="description">
             <div className="dist">
             <p>
               <b>{productName}</b>
@@ -66,7 +67,7 @@ export const Product = ({ data }: any) => {
                 
               </>
             </div>
-          </div>
+          </li>
         </div>
       </div>
     </div>

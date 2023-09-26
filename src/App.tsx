@@ -4,7 +4,8 @@ import Navbar from "./components/Navbar"
 import Shop from "./components/Shop"
 import Cart from "./components/Cart";
 import { ShopContextProvider } from "./shop/ShopContext";
-import CartCanvas from "./components/CartCanvas";
+//import CartCanvas from "./components/CartCanvas";
+import ProductList from "./components/ProductList";
 //import SearchInput from "./components/SearchInput";
 
 
@@ -23,8 +24,8 @@ const App = () => {
         
         <Routes>
           <Route path="/" element = {<Shop/>} />
-          <Route path="cart" element = {<Cart/>} />
-          
+          <Route path="/cart" element = {<Cart/>} />
+          <Route path="/productlist" element = {<ProductList />} />
         </Routes>
       </Router>
       </ShopContextProvider>

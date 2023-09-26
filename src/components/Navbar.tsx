@@ -16,9 +16,11 @@ const Navbar = () => {
     <div className="links">
       <Link to = "/">Shops</Link>
       <Link to ="cart" >
+
         < FaShoppingCart size = {40}/>
         <span>{cartItems?.length}</span>
       </Link>
+      <Link to = "/productlist">ProductList</Link>
 
     </div>
     
