@@ -3,25 +3,18 @@ import Product from "../shop/Product";
 import SelectSize from "../shop/SelectSize";
 import { SHOPITEMS } from "../shop/ShopItems";
 import { ShopContext } from "../shop/ShopContext";
-import Category from "../shop/Category";
+//import Category from "../shop/Category";
 import axios from "axios";
+import ApiCategory, { ProductCategory } from "./ProductCategory";
+
 
 
 export const Shop = () => {
-  const { sizes, category, search } = useContext(ShopContext);
-  console.log(search);
-
-  const [allProduct, setAllProduct] = useState([])
+  const { sizes, category, search,allProduct } = useContext(ShopContext);
 
 
-  const fetchData =  async ()=>{
-    const result:any =  await axios.get("https://ecommerce-trading.onrender.com/api/products")
-    setAllProduct(result?.data.data)
-  }
-  useEffect(()=>{
-     fetchData()
 
-  },[])
+
 
   console.log(allProduct)
 
@@ -52,7 +45,8 @@ export const Shop = () => {
           <SelectSize />
 
           <h3>category:</h3>
-          <Category />
+          
+          <ProductCategory />
         </div>
       
        

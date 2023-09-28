@@ -1,4 +1,4 @@
-
+import AppInput from "./AppInput";
 
 const CartCanvas = () => {
   return (
@@ -10,7 +10,7 @@ const CartCanvas = () => {
         data-bs-target="#staticBackdrop"
         aria-controls="staticBackdrop"
       >
-        Login
+        update
       </button>
     
         
@@ -24,7 +24,7 @@ const CartCanvas = () => {
       >
         <div className="offcanvas-header">
           <h5 className="offcanvas-title" id="staticBackdropLabel">
-            SUBMIT REQUEST
+            Updateproduct
           </h5>
           <button
             type="button"
@@ -54,6 +54,8 @@ aria-describedby="passwordHelpBlock"/>
 </div>
 <div className="btn btn-primary ml-5">Submit</div>
         </div>
+        
+
         
       </div>
     

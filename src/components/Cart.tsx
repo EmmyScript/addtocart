@@ -5,7 +5,8 @@ import { MdShoppingBasket } from "react-icons/md";
 import { PiHandSwipeRightFill } from "react-icons/pi";
 import { ShopContext } from "../shop/ShopContext";
 import CartTable from "../cartlist/CartTable";
-import CartCanvas from "./CartCanvas";
+import UpdateProduct from "./UpdateProduct";
+import UpdateCart from "./UpdateCart";
 
 
 export const Cart = () => {
@@ -16,10 +17,11 @@ export const Cart = () => {
   return (
     <div className="cart">
       <div>
-        <h1 className="cart-list text-center">LIST OF CART ITEMS</h1>
+        <h1 className="cart-list text-center"></h1>
       </div>
       <div className="cartItems">
-      <CartCanvas/>
+        <UpdateProduct/>
+    
         <CartTable />
         
       

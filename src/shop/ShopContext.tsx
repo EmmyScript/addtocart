@@ -1,15 +1,17 @@
 
-import { createContext, useState } from "react";
+import axios from "axios";
+import { createContext, useEffect, useState } from "react";
 
 export interface cartObj {
-id:number
+_id:string
 price:number
 productImage:string
 productName:string
 qtty:number
 size: string
 classob: string
-searchText:string
+category:string
+select: string
 
 searching:string
 }
@@ -20,6 +22,11 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
   const [sizes,  setSizes]  =useState <string>(""); 
   const[category, setCategory] = useState <string>("");
   const [search, setSearch] = useState<string>("");
+  const[prodCategory, setProdCategory]= useState<string>("")
+  const[selectitems, setSelectItems] = useState<string>("")
+  const [allProduct, setAllProduct] = useState([])
+  const[productObj,setProductObj] = useState({})
+
   
   
 
@@ -34,19 +41,19 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
 
   
   
-  const isItemInCart = (itemId: number) => {
+  const isItemInCart = (itemId: string) => {
 
-    return cartItems.some((val:cartObj)=>val.id === itemId);
+    return cartItems.some((val:cartObj)=>val._id === itemId);
   };
 
   const addToCart = (item: cartObj) => {
     console.log(item);
 
-    if (isItemInCart(item.id)) {
+    if (isItemInCart(item._id)) {
 
      const result =  cartItems.map((val:cartObj)=>{
     
-        if(val.id === item.id ){
+        if(val._id === item._id ){
           return{
             ...val,
             qtty:val.qtty+1
@@ -68,11 +75,11 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
   const reduceFromCart = (item: cartObj) => {
     console.log(item);
 
-    if (isItemInCart(item.id)) {
+    if (isItemInCart(item._id)) {
 
      const result =  cartItems.map((val:cartObj)=>{
     
-        if(val.id === item.id && item.qtty > 1){
+        if(val._id === item._id && item.qtty > 1){
           return{
             ...val,
             qtty:val.qtty-1
@@ -92,7 +99,7 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
   const removeFromCart = (item: any) => {
     // alert(JSON.stringify(item, null,1))
 
-    const result =  cartItems.filter((val:cartObj)=>val.id !== item.id)
+    const result =  cartItems.filter((val:cartObj)=>val._id !== item.id)
    return setCartItems(result);
   };
 
@@ -108,6 +115,28 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
   const handleSearch = (productName:string) =>{
     setSearch(productName);
   }
+const handleCategory =(category: string) =>{
+  setProdCategory(category)
+  console.log(category)
+}
+
+const handleSelect =(select: string) =>{
+  setSelectItems(select)
+}
+
+const fetchData =  async ()=>{
+  const result:any =  await axios.get("https://ecommerce-trading.onrender.com/api/products")
+  setAllProduct(result?.data.data)
+}
+useEffect(()=>{
+   fetchData()
+
+},[])
+
+
+const handleClick = (valObj:any)=>{
+  setProductObj(valObj)
+}
   
     
   const contextValue = {
@@ -120,10 +149,19 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
     reduceFromCart,
     handleSize,
     sizes,
+    handleClick,
+    productObj,
     handleCategorys,
     category,
     handleSearch,
-    search
+    search,
+    handleCategory,
+    prodCategory,
+    handleSelect,
+    allProduct,
+    selectitems,
+    
+    
      
   };
 

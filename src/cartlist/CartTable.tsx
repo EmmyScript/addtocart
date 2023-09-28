@@ -19,7 +19,7 @@ import { ShopContext, cartObj } from "../shop/ShopContext";
         </thead>
         <tbody>
           {cartItems.map((val: cartObj) => (
-            <tr key={val.id}>
+            <tr key={val._id}>
               <td>
                 <img
                   src={val.productImage}
