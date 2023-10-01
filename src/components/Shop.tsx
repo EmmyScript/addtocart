@@ -5,18 +5,13 @@ import { SHOPITEMS } from "../shop/ShopItems";
 import { ShopContext } from "../shop/ShopContext";
 //import Category from "../shop/Category";
 import axios from "axios";
-import ApiCategory, { ProductCategory } from "./ProductCategory";
+import  { ProductCategory } from "./ProductCategory";
 
 
 
 export const Shop = () => {
-  const { sizes, category, search,allProduct } = useContext(ShopContext);
+  const { sizes, category, search,allProduct,loading } = useContext(ShopContext);
 
-
-
-
-
-  console.log(allProduct)
 
   const shopProducts =
     sizes !== ""
@@ -34,6 +29,8 @@ export const Shop = () => {
   return (
     
     <div className="container-fliud">
+
+   
      
       <div className="shop-title text-center">
         <h1>shopping</h1>
@@ -51,6 +48,11 @@ export const Shop = () => {
       
        
         <div className="col-md-10">
+        {
+        loading &&  <div className="container h-100 w-100 text-center" style={{flex:1}}>
+          <h4 className="alert alert-info text-center fs-3 fw-bolder">Loading</h4>
+        </div>
+      }
         <div className="row">
          
             {shopProducts?.map((shopitems:any) => (

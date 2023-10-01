@@ -7,8 +7,13 @@ import { ShopContext, cartObj } from "../shop/ShopContext";
     useContext(ShopContext);
 
   return (
-    <div className="table-responsive">
-      <table className="table">
+    <>
+    <div className="container">
+    <div className="row">
+    <div className="col-md-2"></div>
+    <p className="text-center fs-5"></p>
+      <table className="table col-md-8">
+        
         <thead>
           <tr>
             <th>Image</th>
@@ -24,7 +29,7 @@ import { ShopContext, cartObj } from "../shop/ShopContext";
                 <img
                   src={val.productImage}
                   alt="Image"
-                  className="img-auto w-25 h-25"
+                  className="img-auto w-35 h-25"
                 />
               </td>
               <td>{val.productName}</td>
@@ -56,8 +61,11 @@ import { ShopContext, cartObj } from "../shop/ShopContext";
         </tbody>
       </table>
 
-     
+     <div className="col-md-2"></div>
     </div>
+    </div>
+    
+    </>
     
   );
 }

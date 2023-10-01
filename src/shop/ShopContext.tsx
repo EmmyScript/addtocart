@@ -25,7 +25,10 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
   const[prodCategory, setProdCategory]= useState<string>("")
   const[selectitems, setSelectItems] = useState<string>("")
   const [allProduct, setAllProduct] = useState([])
-  const[productObj,setProductObj] = useState({})
+  const[productObj, setProductObj] = useState({})
+
+  const [classStatus, setClassStatus] = useState("")
+  const [loading,setLoading] = useState(false)
 
   
   
@@ -125,8 +128,14 @@ const handleSelect =(select: string) =>{
 }
 
 const fetchData =  async ()=>{
+  setLoading(true)
   const result:any =  await axios.get("https://ecommerce-trading.onrender.com/api/products")
+
+  if(!result){
+    setLoading(false)
+  }
   setAllProduct(result?.data.data)
+  setLoading(false)
 }
 useEffect(()=>{
    fetchData()
@@ -137,8 +146,45 @@ useEffect(()=>{
 const handleClick = (valObj:any)=>{
   setProductObj(valObj)
 }
-  
-    
+
+const handleDelete = async (url:string,id:any) =>{
+  if(id && window.confirm("Are sure you want to delete this item ?")){
+ const res = await   axios({
+      method:"delete",
+      url:`${url}/${id}`,
+      headers:{
+        "Content-Type":"application/json",
+        authorization:"sefdkfjdf"
+      }
+    })
+    fetchData()
+    console.log(res)
+  }
+
+}
+
+const handleCreateProduct = async (data:any, url:string) => {
+  try {
+    const result = await axios({
+      url: url,
+      method: "post", 
+      data: data,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "secret-pin",
+      },
+    });
+
+    if (!result) {
+      setClassStatus("alert alert-danger");
+    }
+    setClassStatus("alert alert-success");
+  } catch (err) {
+    setClassStatus("alert alert-danger");
+  }
+};
+
+
   const contextValue = {
     cartItems,
     addToCart,
@@ -160,6 +206,12 @@ const handleClick = (valObj:any)=>{
     handleSelect,
     allProduct,
     selectitems,
+    handleDelete,
+    handleCreateProduct,
+    classStatus,
+    loading
+
+    
     
     
      

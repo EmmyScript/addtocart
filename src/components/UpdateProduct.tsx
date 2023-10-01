@@ -1,25 +1,17 @@
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { ShopContext } from "../shop/ShopContext";
 import { UpdateModal } from "./UpdateModal";
 
 
 
-const UpdateProduct = () => {
-  const { allProduct, productObj,handleClick } = useContext(ShopContext);
+const UpdateProduct = () =>{
+  const { allProduct, productObj,handleClick,handleDelete } = useContext(ShopContext);
 
 
-  const [update, setUpdate] = useState({
-    productName: "",
-    price: "",
-    productImage: "",
-    thumbnail_image: "",
-    category: "",
-    quantity: "",
-    description: "",
-    rating: "",
-    numReviews: "",
-    size: "",
-  });
+  const url = "https://ecommerce-trading.onrender.com/api/products/delete"
+
+
+
 
   return (
     <div className="container-fluid">
@@ -54,12 +46,17 @@ const UpdateProduct = () => {
               <td>{val.description}</td>
               <td>{val.numReviews}</td>
               <td>{val.size}</td>
-              <td>
+              <td className="d-flex justify-content-between">
                 <button className="btn btn-danger"
                  data-bs-toggle="modal" data-bs-target="#updateModal"
                 onClick={()=>handleClick(val)}
                 >Update</button>
+
+              <button className="btn btn-danger" onClick={()=>handleDelete(url,val._id)}>
+                  Delete
+                </button>
               </td>
+              
             </tr>
          
           ))
@@ -68,7 +65,7 @@ const UpdateProduct = () => {
     </tbody>
       </table>
       </div>
-      <div className="col-md-2"></div>
+    
       </div>
       <UpdateModal productObj={productObj}/>
       </div>
@@ -76,4 +73,4 @@ const UpdateProduct = () => {
   )
 }
 
-export default UpdateProduct
+export default UpdateProduct;

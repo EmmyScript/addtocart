@@ -1,13 +1,12 @@
 import { useContext, useState } from "react";
 import AppInput from "./AppInput";
-import ApiCategory from "./ProductCategory";
+import{ ProductCategory } from "./ProductCategory";
 import { ShopContext } from "../shop/ShopContext";
 import axios from "axios";
 
 export const ProductList = () => {
-  const { prodCategory } = useContext(ShopContext);
+  const { prodCategory, handleCreateProduct,classStatus } = useContext(ShopContext);
 
-  const [classStatus, setClassStatus] = useState("");
 
   const [allValue, setAllValue] = useState({
     productName: "",
@@ -36,28 +35,10 @@ export const ProductList = () => {
   };
 
   const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    try {
-      const result = await axios({
-        url: "https:ecommerce-trading.onrender.com/api/products/create",
-        method: "post",
-        data: formdata,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "secret-pin",
-        },
-      });
 
-      if (!result) {
-        setClassStatus("alert alert-danger");
-        console.log("No product info saved");
-      }
-      console.log("Data saved");
-      setClassStatus("alert alert-success");
-    } catch (err) {
-      console.log("No product info saved");
-      setClassStatus("alert alert-danger");
-    }
+    const url:string =  "https:ecommerce-trading.onrender.com/api/products/create"
+    e.preventDefault();
+    handleCreateProduct(formdata,url)
   };
 
   const handleValues = (e: any) => {
@@ -77,7 +58,7 @@ export const ProductList = () => {
         <div className="container  text-black fs-5 p-2 mb-3">
           <h3 className="text-center mb-3 mt-2">Product Names</h3>
           {classStatus &&
-                <div className="spinner-border text-warning text-center" role="status">
+                <div className="spinner-grow text-warning text-center" role="status">
                 <span className="sr-only">Loading...</span>
               </div>
           }
@@ -177,9 +158,9 @@ export const ProductList = () => {
                     />
                   </div>
                   <div className="col-md-6">
-                    <ApiCategory />
+                  <ProductCategory />
                   </div>
-
+              
                   <div className="col-md-6 mt-2">
                     <button type="submit" className="btn btn-secondary">
                       Submit

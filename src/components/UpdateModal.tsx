@@ -1,7 +1,8 @@
 import  { useState } from 'react'
 import AppInput from './AppInput'
 import axios from 'axios';
-import ApiCategory from './ProductCategory';
+import ProductCategory from './ProductCategory';
+
 
 export const UpdateModal = ({productObj, prodCategory}:any) => {
 
@@ -41,8 +42,7 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
         const data = { ...allValue, [name]: value };
         setAllValue(data);
       };
-
-
+      
       const handleSubmit = async (e: any) => {
         e.preventDefault();
         try {
@@ -55,6 +55,8 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
               Authorization: "secret-pin",
             },
           });
+            
+          
     
           if (!result) {
             setClassStatus("alert alert-danger");
@@ -62,7 +64,8 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
           }
           console.log("Data saved");
           setClassStatus("alert alert-success");
-        } catch (err) {
+        } 
+        catch (err) {
           console.log("No product info saved");
           setClassStatus("alert alert-danger");
         }
@@ -171,7 +174,7 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
                     />
                   </div>
                   <div className="col-md-6">
-                    <ApiCategory />
+                    <ProductCategory />
                   </div>
 
                   <div className="col-md-6 mt-2">
