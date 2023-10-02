@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { ShopContext, cartObj } from "../shop/ShopContext";
 
  export function CartTable () {
-  //const{ productName, price, productImage,qtty} = data;
   const { cartItems, addToCart, reduceFromCart, updateCartItemCount } =
     useContext(ShopContext);
 
@@ -17,7 +16,7 @@ import { ShopContext, cartObj } from "../shop/ShopContext";
         <thead>
           <tr>
             <th>Image</th>
-            <th>Product name</th>
+            <th>ProductName</th>
             <th>price</th>
             <th>Option</th>
           </tr>

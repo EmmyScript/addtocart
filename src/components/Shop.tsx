@@ -1,10 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Product from "../shop/Product";
 import SelectSize from "../shop/SelectSize";
-import { SHOPITEMS } from "../shop/ShopItems";
 import { ShopContext } from "../shop/ShopContext";
-//import Category from "../shop/Category";
-import axios from "axios";
+
 import  { ProductCategory } from "./ProductCategory";
 
 

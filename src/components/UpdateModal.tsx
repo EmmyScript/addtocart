@@ -41,7 +41,7 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
         const name = e.target.name;
         const data = { ...allValue, [name]: value };
         setAllValue(data);
-      };
+      }; 
       
       const handleSubmit = async (e: any) => {
         e.preventDefault();
