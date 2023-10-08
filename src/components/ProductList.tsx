@@ -2,10 +2,12 @@ import { useContext, useState } from "react";
 import AppInput from "./AppInput";
 import{ ProductCategory } from "./ProductCategory";
 import { ShopContext } from "../shop/ShopContext";
-import axios from "axios";
+
+
 
 export const ProductList = () => {
   const { prodCategory, handleCreateProduct,classStatus } = useContext(ShopContext);
+  
 
 
   const [allValue, setAllValue] = useState({
@@ -81,6 +83,7 @@ export const ProductList = () => {
                       name="productName"
                       value={allValue.productName}
                       onChange={handleValues}
+                      
                     />
                   </div>
                   <div className="col-md-6">
@@ -165,11 +168,14 @@ export const ProductList = () => {
                     <button type="submit" className="btn btn-secondary">
                       Submit
                     </button>
+                    
                   </div>
                 </div>
               </form>
             </div>
           </div>
+
+          
         </div>
       </div>
     </>
