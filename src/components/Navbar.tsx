@@ -39,9 +39,34 @@ export default Navbar;
 //let names = ['globall', 'hook', 'emmy',];
 //console.log(names.sort())
 
-let arry = [1, 2, 3, 4, 5, 6, 7, 100];
- let  ans = arry.slice(6, 100)
- console.log(ans)
+//const  arry = [1, 2, 3, 4, 5, 6, 7, 100];
+ //const found = arry.find((element)=> element > 3)
+// console.log(found)
+ 
+const arry1 = [12, 23, 13 , 50, 27, 30];
+const isLargeNuber = ((element: number) => element > 27);
+console.log(arry1.findIndex(isLargeNuber));
+
+
+//include method return true / false 
+//every() return all element in the arry pass de test // true || false
+// some()
+
+//const age =[ 20, 23, 40, 33,]
+//age.some(checkAdult),
+//function checkAdult(age) {
+  //return age > 32
+//}
+
+const fruits = ['orange', 'mango', 'apple', 'orange']
+fruits.fill('cassava') 
+//console.log(fruits)
+// output ['cassava' all]
+
+const fruit = ['orange', 'mango', 'apple', 'orange']
+fruit.fill('cassava', 1, 4)
+console.log(fruit)
+
 
 
 

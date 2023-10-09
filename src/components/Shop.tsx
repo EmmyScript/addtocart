@@ -31,7 +31,7 @@ export const Shop = () => {
    
      
       <div className="shop-title text-center">
-        <h1>shopping</h1>
+        <h1> emmy shopping</h1>
       </div>
       <div className="row">
         <div className="col-md-2  fs-5">
