@@ -178,7 +178,7 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
                   </div>
 
                   <div className="col-md-6 mt-2">
-                    <button type="submit" className="btn btn-secondary">
+                    <button type="submit" className="btn btn-primary">
                       Submit
                     </button>
                   </div>

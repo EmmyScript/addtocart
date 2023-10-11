@@ -1,4 +1,4 @@
-/*
+
 
 const CartCanvas = () => {
   return (
@@ -64,4 +64,4 @@ aria-describedby="passwordHelpBlock"/>
 };
 
 export default CartCanvas;
-*/
+

@@ -7,6 +7,7 @@ const SearchInput = (props: any) => {
   
   return (
     
+    <div className="container ">
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <a className="navbar-brand wt-5" href="#">
@@ -77,6 +78,7 @@ const SearchInput = (props: any) => {
         </div>
       </div>
     </nav>
+    </div>
 
 
   );

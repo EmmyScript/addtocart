@@ -6,6 +6,8 @@ import Cart from "./components/Cart";
 import { ShopContextProvider } from "./shop/ShopContext";
 import ProductList from "./components/ProductList";
 import UpdateProduct from "./components/UpdateProduct";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 
 const App = () => {
@@ -21,6 +23,8 @@ const App = () => {
           <Route path="/cart" element = {<Cart/>} /> 
           <Route path="/productlist" element = {<ProductList />} />
           <Route path="/updateproduct" element = {<UpdateProduct/>} />
+          <Route path = "/login" element = {<Login/>} />
+          <Route path = "/register" element = {<Register/>} />
         </Routes>
       </Router>
       </ShopContextProvider>

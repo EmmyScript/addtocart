@@ -66,10 +66,10 @@ export const Product = ({ data }: any) => {
                     onClick={() => removeFromCart(data)}
                     style={{
                       backgroundColor:
-                        qtty && cartItems.length > 0 ? "red" : "",
+                        qtty && cartItems.length > 0 ? "red" : ""
                     }}
                   >
-                    {qtty && cartItems.length > 0 ? "Remove " : ""}
+                    {qtty && cartItems.length > 0 ? "Removes " : ""}
                   </button>
                 ) : (
                   <button

@@ -14,6 +14,8 @@ category:string
 select: string
 
 searching:string
+login: string
+register: string
 }
 export const ShopContext = createContext<any>(!null);
 
@@ -29,6 +31,7 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
 
   const [classStatus, setClassStatus] = useState("")
   const [loading,setLoading] = useState(false)
+
 
   
   
@@ -184,6 +187,48 @@ const handleCreateProduct = async (data:any, url:string) => {
   }
 };
 
+const handleLogin = async (data:any, url:string) => {
+  try {
+    const result = await axios({
+      url: url,
+      method: "post", 
+      data: data,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "secret-pin",
+      },
+    });
+
+    if (!result) {
+      setClassStatus("alert alert-danger");
+    }
+    setClassStatus("alert alert-success");
+  } catch (err) {
+    setClassStatus("alert alert-danger");
+  }
+};
+const handleRegiister= async (data:any, url:string) => {
+  try {
+    const result = await axios({
+      url: url,
+      method: "post", 
+      data: data,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "secret-pin",
+      },
+    });
+
+    if (!result) {
+      setClassStatus("alert alert-danger");
+    }
+    setClassStatus("alert alert-success");
+  } catch (err) {
+    setClassStatus("alert alert-danger");
+  }
+};
+
+
 
   const contextValue = {
     cartItems,
@@ -209,7 +254,9 @@ const handleCreateProduct = async (data:any, url:string) => {
     handleDelete,
     handleCreateProduct,
     classStatus,
-    loading
+    loading,
+    handleLogin,
+    handleRegiister
 
     
     

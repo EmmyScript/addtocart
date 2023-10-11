@@ -4,6 +4,7 @@ import SelectSize from "../shop/SelectSize";
 import { ShopContext } from "../shop/ShopContext";
 
 import  { ProductCategory } from "./ProductCategory";
+import Login from "../pages/Login";
 
 
 
@@ -26,7 +27,7 @@ export const Shop = () => {
 
   return (
     
-    <div className="container-fliud">
+    <div className="container-fluid mt-3">
 
    
      
@@ -42,6 +43,7 @@ export const Shop = () => {
           <h3>category:</h3>
           
           <ProductCategory />
+          
         </div>
       
        
