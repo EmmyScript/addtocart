@@ -1,40 +1,65 @@
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { ShopContext } from "../shop/ShopContext";
-import { useContext } from "react";
-import SearchInput from "./SearchInput";
+import { useContext, useEffect, useState } from "react";
+//import SearchInput from "./SearchInput";
+import jwt_decode from "jwt-decode";
 
 const Navbar = () => {
   const { cartItems, search } = useContext(ShopContext);
+  const [userData, setUserData] = useState<any>();
+
+  useEffect(() => {
+    const usersD:any = window.localStorage.getItem("user_data");
+    setUserData(JSON.parse(usersD));
+    // const decoded = jwt_decode(JSON.parse(usersD?.token))
+    // console.log(decoded)
+  }, []);
+
+  console.log(userData)
+
+  const handleLogout = ()=>{
+    window.localStorage.removeItem("user_data")
+    window.location.href = "/login"
+  }
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid bg-">
         <nav className="navbar navbar-expand-md bg-body-tertiary">
           <div className="container-fluid">
-           
-        <div className="nav">
-            <li className="nav-item d-inline-none">
-                  <Link to="/login" className="nav-link">
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/register" className="nav-link">
-                    Register
-                  </Link>
-                </li>
-</div>
+            <div className="nav">
+            {!userData ? 
+            <>
+              <li className="nav-item d-inline-none">
+                <Link to="/login" className="nav-link">
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/register" className="nav-link">
+                  Register
+                </Link>
+              </li>
+              </>
+              :
+              <li className="nav-item" onClick={handleLogout}>
+              <Link to="!#" className="nav-link">
+                Logout
+              </Link>
+            </li>
+              }
+            </div>
             <form className="d-flex d-lg-none" role="search">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button className="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
             <button
               className="navbar-toggler"
               type="button"
@@ -48,6 +73,11 @@ const Navbar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">
+                    {userData && userData?.user.fullname}
+                  </Link>
+                </li>
                 <li className="nav-item">
                   <Link to="/" className="nav-link">
                     Shops
@@ -72,7 +102,7 @@ const Navbar = () => {
                   Search
                 </button>
               </form>
-            </div> 
+            </div>
           </div>
         </nav>
       </div>

@@ -165,7 +165,7 @@ const handleDelete = async (url:string,id:any) =>{
   }
 
 }
-
+ 
 const handleCreateProduct = async (data:any, url:string) => {
   try {
     const result = await axios({
@@ -188,6 +188,7 @@ const handleCreateProduct = async (data:any, url:string) => {
 };
 
 const handleLogin = async (data:any, url:string) => {
+  setLoading(true)
   try {
     const result = await axios({
       url: url,
@@ -195,19 +196,33 @@ const handleLogin = async (data:any, url:string) => {
       data: data,
       headers: {
         "Content-Type": "application/json",
-        Authorization: "secret-pin",
+        Authorization: "secret-pin pls",
       },
     });
 
     if (!result) {
+      setLoading(false)
       setClassStatus("alert alert-danger");
     }
     setClassStatus("alert alert-success");
-  } catch (err) {
+
+    console.log(result)
+    window.localStorage.setItem("user_data",JSON.stringify(result.data))
+    
+    window.location.href = "/"
+  } catch (err :any) {
     setClassStatus("alert alert-danger");
-  }
+    console.log(err.response.data.error)           
+  }     
+
+ 
+  setLoading(false)
 };
+
+
 const handleRegiister= async (data:any, url:string) => {
+  setLoading(true)
+  console.log(data)
   try {
     const result = await axios({
       url: url,
@@ -215,16 +230,19 @@ const handleRegiister= async (data:any, url:string) => {
       data: data,
       headers: {
         "Content-Type": "application/json",
-        Authorization: "secret-pin",
+        Authorization: "secret-pin pls",
       },
     });
 
     if (!result) {
+      setLoading(false)
       setClassStatus("alert alert-danger");
     }
+    console.log(result)
     setClassStatus("alert alert-success");
   } catch (err) {
     setClassStatus("alert alert-danger");
+    setLoading(false)
   }
 };
 

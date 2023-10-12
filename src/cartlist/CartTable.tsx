@@ -9,9 +9,9 @@ import { ShopContext, cartObj } from "../shop/ShopContext";
     <>
     <div className="container">
     <div className="row">
-    <div className="col-md-2"></div>
-    <p className="text-center fs-5"></p>
-      <table className="table col-md-8">
+    <div className="col-md-3"></div>
+    <p className="text-center fs-5 bg-primary"> list of product selected from shop</p>
+      <table className="table col-md-6">
         
         <thead>
           <tr>
@@ -60,7 +60,7 @@ import { ShopContext, cartObj } from "../shop/ShopContext";
         </tbody>
       </table>
 
-     <div className="col-md-2"></div>
+     <div className="col-md-3"></div>
     </div>
     </div>
     

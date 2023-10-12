@@ -5,6 +5,7 @@ import { ShopContext } from "../shop/ShopContext";
 
 import  { ProductCategory } from "./ProductCategory";
 import Login from "../pages/Login";
+import UserRegister from "../pages/UserRegister";
 
 
 
@@ -43,6 +44,7 @@ export const Shop = () => {
           <h3>category:</h3>
           
           <ProductCategory />
+          
           
         </div>
       

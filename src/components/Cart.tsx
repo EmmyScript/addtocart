@@ -20,7 +20,7 @@ export const Cart = () => {
         <h1 className="cart-list text-center"></h1>
       </div>
       <div className="cartItems">
-        <UpdateProduct/>
+        
     
         <CartTable />
         
@@ -30,7 +30,7 @@ export const Cart = () => {
           <p className="fs-3 text-center text-success">
             subtotal: ${totalAmount}{" "}
           </p>
-          <button className="btn btn-secondary" onClick={() => navigate("/")}>continue shopping</button>
+          <button className="btn btn-secondary m-4" onClick={() => navigate("/")}>continue shopping</button>
           <button className="btn btn-secondary">Checkout</button>
         </div>
       ) : (
@@ -46,8 +46,8 @@ export const Cart = () => {
         </h1>
       )}
 
-      <button className="btn btn-success" onClick={() => setCartItems([])}>
-        Clear cart
+      <button className="btn btn-success m-4" onClick={() => setCartItems([])}>
+        Clear Cart
       </button>
     </div>
     </div>

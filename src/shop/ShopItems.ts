@@ -36,6 +36,7 @@ import game3 from "../assets/images/game3.jpg"
         description: "shopping store",
         size: 'XS', 
         searching:"easy"
+        
 
         
     },
