@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { ShopContext } from "../shop/ShopContext";
 import { useContext, useEffect, useState } from "react";
+import { BiSolidDashboard } from "react-icons/bi";
 //import SearchInput from "./SearchInput";
-import jwt_decode from "jwt-decode";
+
 
 const Navbar = () => {
   const { cartItems, search } = useContext(ShopContext);
@@ -24,12 +25,17 @@ const Navbar = () => {
   }
   return (
     <>
-      <div className="container-fluid bg-">
+      <div className="container-fluid ">
         <nav className="navbar navbar-expand-md bg-body-tertiary">
           <div className="container-fluid">
             <div className="nav">
             {!userData ? 
             <>
+            <li className="nav-item d-inline-none">
+                <Link to="/adminnav" className="nav-link"><span><BiSolidDashboard size={17}/></span>
+                   Dashboard
+                </Link>
+              </li>
               <li className="nav-item d-inline-none">
                 <Link to="/login" className="nav-link">
                   Login
@@ -107,6 +113,8 @@ const Navbar = () => {
         </nav>
       </div>
       {/* <SearchInput search={search} /> */}
+
+      
     </>
   );
 };

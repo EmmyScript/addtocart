@@ -18,7 +18,7 @@ const UpdateProduct = () =>{
     <div className="row">
       <div className="col-md-2"></div>
       <div className="col-md-8">
-      <h1 className="produdtlist text-center"><b>Product List</b></h1>
+      <h1 className="updateproductlist text-center"><b>Update Product List </b></h1>
     <table className="table table-responsive">   
       <thead>
         <tr>

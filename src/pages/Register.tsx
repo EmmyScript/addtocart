@@ -42,7 +42,7 @@ const Register = () => {
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-6 bg-dark p-4">
-            <h2 className=" text-center ">Register Users</h2>
+            <h2 className=" text-center ">Register Userseeee</h2>
             {loading && (
           <div className="spinner-grow text-warning text-center" role="status">
             <span className="sr-only">Loading...</span>
