@@ -1,15 +1,25 @@
-import  { useState } from 'react'
+import  { useContext, useState } from 'react'
 import AppInput from './AppInput'
 import axios from 'axios';
 import ProductCategory from './ProductCategory';
+import { FormProvider, useForm } from 'react-hook-form';
+import { ShopContext } from '../shop/ShopContext';
 
 
-export const UpdateModal = ({productObj, prodCategory}:any) => {
+export const UpdateModal = () => {
+  const{handleUpdateProduct, classStatus } = useContext(ShopContext)
 
-    const [classStatus, setClassStatus] = useState("");
+const methods = useForm();
+const formActualData =(data: any) => {
+  console.log(data)
+   const url: string =  "https://ecommerce-trading.onrender.com/api/products/update"
+  handleUpdateProduct(data, url)
+}
 
-    console.log(productObj.productName)
+    //const [classStatus, setClassStatus] = useState("");
 
+   // console.log(productObj.productName)
+/*
     const [allValue, setAllValue] = useState({
         productName: productObj.productName ? productObj.productName : "",
         price: productObj.price ? productObj.price : "" ,
@@ -54,7 +64,7 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
               "Content-Type": "application/json",
               Authorization: "secret-pin",
             },
-          });
+                });
             
           
     
@@ -70,7 +80,12 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
           setClassStatus("alert alert-danger");
         }
       };
-  return (
+
+      */
+  
+  
+  
+      return (
     <div>
 
 <div className="modal fade" id="updateModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -88,15 +103,17 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
                 : "Not saved"}
             </div>
           )}
-      <form onSubmit={handleSubmit}>
+
+          <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(formActualData)}>
                 <div className="row">
                   <div className="col-md-6">
                     <AppInput
                       type="text"
                       label="ProductName"
                       name="productName"
-                      value={allValue.productName}
-                      onChange={handleValues}
+                      required={true}
+                      
                     />
                   </div>
                   <div className="col-md-6">
@@ -104,8 +121,7 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
                       type="number"
                       label="Price"
                       name="price"
-                      value={allValue.price}
-                      onChange={handleValues}
+                     required={true}
                     />
                   </div>
                   <div className="col-md-6">
@@ -113,8 +129,7 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
                       type="text"
                       label="ProductImage"
                       name="productImage"
-                      value={allValue.productImage}
-                      onChange={handleValues}
+                      required={true}
                     />
                   </div>
 
@@ -123,9 +138,12 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
                       type="text"
                       label="ThumbNail image"
                       name="thumbnail_image"
-                      value={allValue.thumbnail_image}
-                      onChange={handleValues}
+                     required= {true}
                     />
+                  </div>
+
+                  <div className="col-md-6">
+                    <ProductCategory />
                   </div>
 
                   <div className="col-md-6">
@@ -133,8 +151,7 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
                       type="text"
                       label="Quantity"
                       name="quantity"
-                      value={allValue.quantity}
-                      onChange={handleValues}
+                      required={true}
                     />
                   </div>
                   <div className="col-md-6">
@@ -142,8 +159,7 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
                       type="text"
                       label="Description"
                       name="description"
-                      value={allValue.description}
-                      onChange={handleValues}
+                     required={true}
                     />
                   </div>
                   <div className="col-md-6">
@@ -151,8 +167,7 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
                       type="text"
                       label="Rating"
                       name="rating"
-                      value={allValue.rating}
-                      onChange={handleValues}
+                      required={true}
                     />
                   </div>
                   <div className="col-md-6">
@@ -160,8 +175,7 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
                       type="text"
                       label="NumReviews"
                       name="numReviews"
-                      value={allValue.numReviews}
-                      onChange={handleValues}
+                      required={true}
                     />
                   </div>
                   <div className="col-md-6">
@@ -169,14 +183,12 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
                       type="text"
                       label="Size"
                       name="size"
-                      value={allValue.size}
-                      onChange={handleValues}
+                      required= {true}
+
+                    
                     />
                   </div>
-                  <div className="col-md-6">
-                    <ProductCategory />
-                  </div>
-
+                  
                   <div className="col-md-6 mt-2">
                     <button type="submit" className="btn btn-primary">
                       Submit
@@ -184,6 +196,7 @@ export const UpdateModal = ({productObj, prodCategory}:any) => {
                   </div>
                 </div>
               </form>
+              </FormProvider>
       </div>
 
     </div>

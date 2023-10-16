@@ -1,5 +1,5 @@
-import { useForm } from "react-hook-form";
-import { Formdatas } from "../pages/Login";
+import {  useFormContext } from "react-hook-form";
+import AppErrorMessage from "./AppErrorMessage";
 
 interface IType {
   label: string;
@@ -7,13 +7,15 @@ interface IType {
   onChange?: any;
   name: string;
   value?: string | number;
-  id?:string
+  id?: string;
+  required: boolean;
+  minLength?:number
 }
-function AppInput({ label, type, name, onChange, value,id }: IType) {
+function AppInput({ label, type, name, required,minLength }: IType) {
   const {
     register,
     formState: { errors },
-  } = useForm<Formdatas | any>();
+  } = useFormContext();
 
   return (
     <div className="mb-3">
@@ -21,14 +23,13 @@ function AppInput({ label, type, name, onChange, value,id }: IType) {
         {label}
       </label>
       <input
-      {...register(type, { required: true, minLength: 5 })}
+        {...register(name, { required: required, minLength:minLength})}
         type={type}
         className="form-control"
         name={name}
         id={name}
-        onChange={onChange}
-        value={value}
       />
+      <AppErrorMessage errors={errors} name={name} required={required} minLength={minLength}/>
     </div>
   );
 }

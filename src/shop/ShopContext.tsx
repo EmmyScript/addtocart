@@ -105,7 +105,7 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
   const removeFromCart = (item: any) => {
     // alert(JSON.stringify(item, null,1))
 
-    const result =  cartItems.filter((val:cartObj)=>val._id !== item.id)
+    const result =  cartItems.filter((val:cartObj)=>val._id !== item._id)
    return setCartItems(result);
   };
 
@@ -167,6 +167,7 @@ const handleDelete = async (url:string,id:any) =>{
 }
  
 const handleCreateProduct = async (data:any, url:string) => {
+  
   try {
     const result = await axios({
       url: url,
@@ -214,15 +215,21 @@ const handleLogin = async (data:any, url:string) => {
     setClassStatus("alert alert-danger");
     console.log(err.response.data.error)           
   }     
-
- 
   setLoading(false)
+
+  {classStatus !== "" && (
+    <div className={classStatus}>
+      {classStatus.split("-").includes("success")
+        ? "Saved success"
+        : " "}
+    </div>
+  )}
 };
 
 
 const handleRegiister= async (data:any, url:string) => {
   setLoading(true)
-  console.log(data)
+
   try {
     const result = await axios({
       url: url,
@@ -246,6 +253,33 @@ const handleRegiister= async (data:any, url:string) => {
   }
 };
 
+const handleUpdateProduct = async (data: any) => {
+  
+  try {
+    const result = await axios({
+      url: "https://ecommerce-trading.onrender.com/api/products/update",
+      method: "put",
+      data: data,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "secret-pin",
+      },
+    });
+      
+    
+
+    if (!result) {
+      setClassStatus("alert alert-danger");
+      console.log("No product info saved");
+    }
+    console.log("Data saved");
+    setClassStatus("alert alert-success");
+  } 
+  catch (err) {
+    console.log("No product info saved");
+    setClassStatus("alert alert-danger");
+  }
+};
 
 
   const contextValue = {
@@ -274,7 +308,8 @@ const handleRegiister= async (data:any, url:string) => {
     classStatus,
     loading,
     handleLogin,
-    handleRegiister
+    handleRegiister,
+    handleUpdateProduct
 
     
     

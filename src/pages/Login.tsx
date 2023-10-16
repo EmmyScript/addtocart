@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import AppInput from "../components/AppInput";
 import { ShopContext } from "../shop/ShopContext";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 
 export interface Formdatas {
   email: string;
@@ -12,42 +12,24 @@ export interface Formdatas {
 const Login = () => {
   const { handleLogin, loading, classStatus } = useContext(ShopContext);
 
-  const [allValue, setAllValue] = useState({
-    email: "",
-    password: "",
-  });
-  const formdata = {
-    email: allValue.email,
-    password: allValue.password,
-  };
+  const methods = useForm();
 
-  const {
-    
-    register,
-    formState: { errors },
-  } = useForm<any>();
+  const formActualData = (data: any) => {
 
-  const onSubmit = (data: FieldValues) => console.log(data);
-  
+    console.log(data)
 
-   const handleSubmit = async (e: any) => {
-     const url: string = "https://ecommerce-trading.onrender.com/api/auth/login";
-     e.preventDefault();
-     handleLogin(formdata, url);
-   };
+        const url: string = "https://ecommerce-trading.onrender.com/api/auth/login";
+     handleLogin(data, url);
+     
 
-  const handleValues = (e: any) => {
-    const value = e.target.value;
-    const name = e.target.name;
-    const data = { ...allValue, [name]: value };
-    setAllValue(data);
-  };
+  }
+
   return (
     <div className="login">
       <div className="container text-white ">
         <div className="row">
           <div className="col-md-3"></div>
-          <div className="col-md-6 bg-success p-3">
+          <div className="col-md-6 bg-dark p-3">
             <h3 className="text-center">Login</h3>
             {loading && (
               <div
@@ -57,46 +39,44 @@ const Login = () => {
                 <span className="sr-only">Loading...</span>
               </div>
             )}
-            {classStatus !== "" && (
+            
+            {/* {classStatus !== "" && (
               <div className={classStatus}>
                 {classStatus.split("-").includes("success")
                   ? "Saved success"
                   : "Not saved"}
               </div>
-            )}
+            )} */}
 
-            <form onSubmit={handleSubmit}>
-              <input
-                {...register("email", { required: true, minLength: 5 })}
-                type={"text"}
-                className="form-control"
-                name={"email"}
-                id={"email"}
-              />
-              <div className="mb-3">
-                {errors.email?.type === "required" && (
-                  <p className="text-danger">enter the required character</p>
-                )}
-                {errors.email?.type === "minLength" && (
-                  <p>pls enter five character</p>
-                )}
-              </div>
-              <div className="mb-3">
-                <AppInput
-                  type="password"
-                  label="Password"
-                  name="password"
-                  value={allValue.password}
-                  onChange={handleValues}
-                />
-              </div>
+            <FormProvider {...methods}>
+              <form onSubmit={methods.handleSubmit(formActualData)}>
+                <div className="mb-3">
+                  <AppInput
+                    type={"email"}
+                    name="email"
+                    // id="email"
+                    label="Email"
+                    required={true}
+                    
+                  />
+                </div>
+                <div className="mb-3">
+                  <AppInput
+                    type="password"
+                    label="Password"
+                    name="password"
+                    required={true}
+                    minLength={5}
+                  />
+                </div>
 
-              <div className="mb-3">
-                <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
-              </div>
-            </form>
+                <div className="mb-3">
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </FormProvider>
           </div>
           <div className="col-md-3"></div>
         </div>

@@ -56,7 +56,7 @@ const UpdateProduct = () =>{
                   Delete
                 </button>
               </td>
-              
+            
             </tr>
          
           ))
@@ -67,10 +67,13 @@ const UpdateProduct = () =>{
       </div>
     
       </div>
-      <UpdateModal productObj={productObj}/>
+      <UpdateModal />
       </div>
       
   )
 }
 
 export default UpdateProduct;
+
+
+//< updatemodal  productOBject={productobject}

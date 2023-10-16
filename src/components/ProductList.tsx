@@ -2,14 +2,21 @@ import { useContext, useState } from "react";
 import AppInput from "./AppInput";
 import{ ProductCategory } from "./ProductCategory";
 import { ShopContext } from "../shop/ShopContext";
+import { FormProvider, useForm } from "react-hook-form";
 
 
 
 export const ProductList = () => {
-  const { prodCategory, handleCreateProduct,classStatus } = useContext(ShopContext);
-  
+  const { prodCategory, handleCreateProduct,classStatus, loading} = useContext(ShopContext);
 
+  const methods = useForm()
+const formActualData = (data: any) =>{
+console.log(data)
+const url:string =  "https:ecommerce-trading.onrender.com/api/products/create"
+handleCreateProduct(data, url)
+}
 
+/*
   const [allValue, setAllValue] = useState({
     productName: "",
     price: "",
@@ -43,6 +50,7 @@ export const ProductList = () => {
     handleCreateProduct(formdata,url)
   };
 
+
   const handleValues = (e: any) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -50,17 +58,25 @@ export const ProductList = () => {
     setAllValue(data);
   };
 
-  console.log(prodCategory);
+ 
+*/
 
+console.log(prodCategory);
 
 
   return (
     <>
       <div className="productlist">
-        <div className="container  text-black fs-5 p-2 mb-3">
-          <h3 className="text-center mb-3 mt-2">Product Names</h3>
-          {classStatus &&
-                <div className="spinner-grow text-warning text-center" role="status">
+        <div className="container   fs-5  mb-3">
+          
+          <div className="row">
+            <div className="col-md-2"></div>
+            <div className="col-md-8  p-4 bg-dark text-white fs-60">
+
+
+            <h3 className="text-center mb-3 mt-2">Product Names</h3>
+          {loading &&
+                <div className="spinner-row text-warning text-center" role="status">
                 <span className="sr-only">Loading...</span>
               </div>
           }
@@ -71,18 +87,16 @@ export const ProductList = () => {
                 : "Not saved"}
             </div>
           )}
-          <div className="row">
-            <div className="col-md-2"></div>
-            <div className="col-md-8">
-              <form onSubmit={handleSubmit}>
+
+              <FormProvider {...methods}>
+              <form onSubmit={methods.handleSubmit(formActualData)}>
                 <div className="row">
                   <div className="col-md-6">
                     <AppInput
                       type="text"
                       label="ProductName"
                       name="productName"
-                      value={allValue.productName}
-                      onChange={handleValues}
+                      required={true}
                       
                     />
                   </div>
@@ -91,8 +105,7 @@ export const ProductList = () => {
                       type="number"
                       label="Price"
                       name="price"
-                      value={allValue.price}
-                      onChange={handleValues}
+                      required={true}
                     />
                   </div>
                   <div className="col-md-6">
@@ -100,8 +113,8 @@ export const ProductList = () => {
                       type="text"
                       label="ProductImage"
                       name="productImage"
-                      value={allValue.productImage}
-                      onChange={handleValues}
+                      required={true}
+
                     />
                   </div>
 
@@ -110,9 +123,12 @@ export const ProductList = () => {
                       type="text"
                       label="ThumbNail image"
                       name="thumbnail_image"
-                      value={allValue.thumbnail_image}
-                      onChange={handleValues}
+                      required= {true}
                     />
+                  </div>
+                  <div className="col-md-6 mb-12">
+                    <label className = "form-label">Category</label>
+                  <ProductCategory />
                   </div>
 
                   <div className="col-md-6">
@@ -120,8 +136,7 @@ export const ProductList = () => {
                       type="text"
                       label="Quantity"
                       name="quantity"
-                      value={allValue.quantity}
-                      onChange={handleValues}
+                      required={true}
                     />
                   </div>
                   <div className="col-md-6">
@@ -129,8 +144,7 @@ export const ProductList = () => {
                       type="text"
                       label="Description"
                       name="description"
-                      value={allValue.description}
-                      onChange={handleValues}
+                      required={true}
                     />
                   </div>
                   <div className="col-md-6">
@@ -138,8 +152,7 @@ export const ProductList = () => {
                       type="text"
                       label="Rating"
                       name="rating"
-                      value={allValue.rating}
-                      onChange={handleValues}
+                      required={true}
                     />
                   </div>
                   <div className="col-md-6">
@@ -147,8 +160,7 @@ export const ProductList = () => {
                       type="text"
                       label="NumReviews"
                       name="numReviews"
-                      value={allValue.numReviews}
-                      onChange={handleValues}
+                      required={true}
                     />
                   </div>
                   <div className="col-md-6">
@@ -156,13 +168,10 @@ export const ProductList = () => {
                       type="text"
                       label="Size"
                       name="size"
-                      value={allValue.size}
-                      onChange={handleValues}
+                      required={true}
                     />
                   </div>
-                  <div className="col-md-6">
-                  <ProductCategory />
-                  </div>
+                 
               
                   <div className="col-md-6 mt-2">
                     <button type="submit" className="btn btn-secondary">
@@ -172,6 +181,8 @@ export const ProductList = () => {
                   </div>
                 </div>
               </form>
+
+              </FormProvider>
             </div>
           </div>
 

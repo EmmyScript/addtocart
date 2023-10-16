@@ -1,38 +1,24 @@
 import { useContext, useState } from "react";
 import AppInput from "../components/AppInput";
 import { ShopContext } from "../shop/ShopContext";
+import { FormProvider, useForm } from "react-hook-form";
 
+export interface Formdatas {
+  email: string;
+  password: string | number;
+  onSubmit: any;
+}
 const Register = () => {
   const { handleRegiister, loading, classStatus } = useContext(ShopContext);
-  const [allValue, setAllValue] = useState({
-    email: "",
-    password: "",
-    isAdmin: "",
-    fullname: "",
-    phoneNumber: "",
-  });
-  const formdata = {
-    email: allValue.email,
-    password: allValue.password,
-    isAdmin: allValue.isAdmin,
-    fullname: allValue.fullname,
-    phoneNumber: allValue.phoneNumber,
-  };
+  const methods = useForm();
+  
+  const formActualData =(data: any) => {
+    const url: string = "https://ecommerce-trading.onrender.com/api/auth/register";
+  
+  handleRegiister(data, url);
 
+  }
 
-  const handleSubmit = async (e: any) => {
-    const url: string =
-      "https://ecommerce-trading.onrender.com/api/auth/register";
-    e.preventDefault();
-    handleRegiister(formdata, url);
-  };
-
-  const handleValues = (e: any) => {
-    const value = e.target.value;
-    const name = e.target.name;
-    const data = { ...allValue, [name]: value };
-    setAllValue(data);
-  };
   return (
     <div className="register">
       <div className="container  text-white">
@@ -55,24 +41,27 @@ const Register = () => {
               : "Not saved"}
           </div>
         )}
-          <form onSubmit={handleSubmit}>
+        
+        <FormProvider {...methods}>
+          <form onSubmit={methods.handleSubmit(formActualData)}>
 
               <div className=" mb-3">
                 <AppInput
-                  type="text"
-                  label="Email"
+                  type={"email"}
                   name="email"
-                  value={allValue.email}
-                  onChange={handleValues}
+                  
+                  label="Email"
+                  required={true}
                 />
               </div>
               <div className="mb-3">
                 <AppInput
-                  type="password"
-                  label="Password"
-                  name="password"
-                  value={allValue.password}
-                  onChange={handleValues}
+              type="password"
+              label="Password"
+              name="password"
+              required={true}
+              minLength={5}
+                  
                 />
               </div>
               <div className="mb-3">
@@ -80,8 +69,8 @@ const Register = () => {
                   type="text"
                   label="IsAdmin"
                   name="isAdmin"
-                  value={allValue.isAdmin}
-                  onChange={handleValues}
+                  required={true}
+                  
                 />
               </div>
               <div className="mb-3">
@@ -89,8 +78,7 @@ const Register = () => {
                   type="text"
                   label="Fullname"
                   name="fullname"
-                  value={allValue.fullname}
-                  onChange={handleValues}
+                  required={true}
                 />
               </div>
 
@@ -99,8 +87,8 @@ const Register = () => {
                   type="number"
                   label="PhoneNumber"
                   name="phoneNumber"
-                  value={allValue.phoneNumber}
-                  onChange={handleValues}
+                  required= {true}
+                  minLength={11}
                 />
               </div>
 
@@ -110,6 +98,8 @@ const Register = () => {
           
             
           </form>
+          </FormProvider>
+          
           </div>
         </div>
         <div className="mb-3"></div>

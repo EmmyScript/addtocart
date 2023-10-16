@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom"
+
 import ProductList from "./ProductList"
 import UpdateProduct from "./UpdateProduct"
 
@@ -11,8 +11,8 @@ const AdminNav = () => {
   
       <div className="adminnav">
     <ProductList />
-    
     <UpdateProduct/>
+    
        
     </div>
    </div>
