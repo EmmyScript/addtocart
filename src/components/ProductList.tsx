@@ -11,9 +11,22 @@ export const ProductList = () => {
 
   const methods = useForm()
 const formActualData = (data: any) =>{
-console.log(data)
+
+  const formdata = {
+    productName: data.productName,
+    price: data.price,
+    productImage: data.productImage,
+    thumbnail_image: data.thumbnail_image,
+    category: prodCategory,
+    quantity: data.quantity,
+    description: data.description,
+    rating: data.rating,
+    numReviews: data.numReviews,
+    size: data.size,
+  };
+console.log(formdata)
 const url:string =  "https:ecommerce-trading.onrender.com/api/products/create"
-handleCreateProduct(data, url)
+handleCreateProduct(formdata, url)
 }
 
 /*

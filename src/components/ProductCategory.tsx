@@ -1,5 +1,6 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ShopContext } from "../shop/ShopContext";
+import AppInput from "./AppInput";
 
 const APICATEGORY = [
   {
@@ -21,16 +22,22 @@ const APICATEGORY = [
 ];
 export const ProductCategory = () => {
   const { handleCategory } = useContext(ShopContext);
+ 
   return (
     <>
       <div className="dropdown">
-        <select
+        <select 
           className="form-select"
-          onChange={(e) => handleCategory(e.target.value)}
+          onChange={(e) => handleCategory(e.target.value)
+            
+          }
+        
         >
           <option defaultValue={""}>Select category</option>
           {APICATEGORY.map((apicategorys) => (
-            <option key={apicategorys.id}>{apicategorys.category}</option>
+            <option key={apicategorys.id}>{apicategorys.category}
+
+            </option>
           ))}
         </select>
       </div>

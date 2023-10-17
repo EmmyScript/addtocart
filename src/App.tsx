@@ -1,42 +1,50 @@
-
-import  {BrowserRouter as Router,Routes, Route,} from "react-router-dom";
-import Navbar from "./components/Navbar"
-import Shop from "./components/Shop"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import { ShopContextProvider } from "./shop/ShopContext";
-import ProductList from "./components/ProductList";
-import UpdateProduct from "./components/UpdateProduct";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import AdminNav from "./components/AdminNav";
-
+import AdminNav from "./components/AdminDashBoards";
+import AdminNavbar from "./components/AdminNavbar";
+import ProductList from "./components/ProductList";
+import UpdateProduct from "./components/UpdateProduct";
+import AdminDashBoards from "./components/AdminDashBoards";
+import Jan from "./components/Jan"
 
 const App = () => {
+  const isAdmin = true
   return (
+    <div className="containers">
 
-    <div className="containers" >
-      <ShopContextProvider>
-      <Router>
-        <Navbar/>
-        
-        <Routes>
-          <Route path="/" element = {<Shop/>} />
-          <Route path="/cart" element = {<Cart/>} /> 
-          <Route path="/adminnav" element = {<AdminNav />} />
-        
-          <Route path = "/login" element = {<Login/>} />
-          <Route path = "/register" element = {<Register/>} />
-          
-        </Routes>
-      </Router>
-      </ShopContextProvider>
       
-   
-</div>
+      <ShopContextProvider>
+        <Router>
+          {isAdmin ? <AdminNavbar /> : <Navbar />}
 
+          {isAdmin ? (
+            <Routes>
+          
 
-  )
-}
+              <Route path="/admindashboard" element={<AdminDashBoards />} />
+              <Route path="/updateproductlist" element={<UpdateProduct/>} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/productlist" element={<ProductList />} />
+            </Routes>
+          ) : (
+            <Routes>
+              <Route path="/" element={<Shop />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          )}
+        </Router>
+      </ShopContextProvider>
+      <Jan/>
+    </div>
+  );
+};
 
 export default App;
-

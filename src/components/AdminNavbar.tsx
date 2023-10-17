@@ -6,7 +6,7 @@ import { BiSolidDashboard } from "react-icons/bi";
 //import SearchInput from "./SearchInput";
 
 
-function Navbar()  {
+const AdminNavbar = () => {
   const { cartItems, search } = useContext(ShopContext);
   const [userData, setUserData] = useState<any>();
 
@@ -32,8 +32,13 @@ function Navbar()  {
             {!userData ? 
             <>
             <li className="nav-item d-inline-none">
-                <Link to="/adminnav" className="nav-link"><span><BiSolidDashboard size={17}/></span>
+                <Link to="/admindashboard" className="nav-link"><span><BiSolidDashboard size={17}/></span>
                    Dashboard
+                </Link>
+              </li>
+              <li className="nav-item d-inline-none">
+                <Link to="/updateproductlist" className="nav-link">
+                  Updateproduct
                 </Link>
               </li>
               <li className="nav-item d-inline-none">
@@ -44,6 +49,11 @@ function Navbar()  {
               <li className="nav-item">
                 <Link to="/register" className="nav-link">
                   Register
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/productlist" className="nav-link">
+                  Add product
                 </Link>
               </li>
               </>
@@ -119,7 +129,7 @@ function Navbar()  {
   );
 };
 
-export default Navbar;
+export default AdminNavbar;
 
 //let names = ['globall', 'hook', 'emmy',];
 //console.log(names.sort())
