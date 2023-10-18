@@ -43,35 +43,6 @@ handleCreateProduct(formdata, url)
     size: "",
   });
 
-  const formdata = {
-    productName: allValue.productName,
-    price: allValue.price,
-    productImage: allValue.productImage,
-    thumbnail_image: allValue.thumbnail_image,
-    category: prodCategory,
-    quantity: allValue.quantity,
-    description: allValue.description,
-    rating: allValue.rating,
-    numReviews: allValue.numReviews,
-    size: allValue.size,
-  };
-
-  const handleSubmit = async (e: any) => {
-
-    const url:string =  "https:ecommerce-trading.onrender.com/api/products/create"
-    e.preventDefault();
-    handleCreateProduct(formdata,url)
-  };
-
-
-  const handleValues = (e: any) => {
-    const value = e.target.value;
-    const name = e.target.name;
-    const data = { ...allValue, [name]: value };
-    setAllValue(data);
-  };
-
- 
 */
 
 console.log(prodCategory);
@@ -84,7 +55,7 @@ console.log(prodCategory);
           
           <div className="row">
             <div className="col-md-2"></div>
-            <div className="col-md-8  p-4 bg-dark text-white fs-60">
+            <div className="col-md-8  p-4 bg-dark text-white fs-24">
 
 
             <h3 className="text-center mb-3 mt-2">Product Names</h3>

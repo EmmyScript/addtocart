@@ -7,13 +7,42 @@ import { ShopContext } from '../shop/ShopContext';
 
 
 export const UpdateModal = () => {
-  const{handleUpdateProduct, classStatus } = useContext(ShopContext)
+  const{handleUpdateProduct,productObj, classStatus } = useContext(ShopContext)
 
 const methods = useForm();
 const formActualData =(data: any) => {
-  console.log(data)
-   const url: string =  "https://ecommerce-trading.onrender.com/api/products/update"
-  handleUpdateProduct(data, url)
+  const formdata = {
+    productName: data.productName,
+    price: data.price,
+    productImage: data.productImage,
+    thumbnail_image: data.thumbnail_image,
+    category: ProductCategory,
+    quantity: data.quantity,
+    description: data.description,
+    rating: data.rating,
+    numReviews: data.numReviews,
+    size: data.size,
+  };
+
+  console.log(productObj.productName)
+
+  
+  const [allValue, setAllValue] = useState({
+    productName: productObj.productName ? productObj.productName : "",
+    price: productObj.price ? productObj.price : "" ,
+    productImage: productObj.productImage ? productObj.productImage : "",
+    thumbnail_image: productObj.thumbnail_image ? productObj.thumbnail_image : "",
+    category: productObj.category ? productObj.category : "",
+    quantity: productObj.quantity ? productObj.quantity : "",
+    description: productObj.description ? productObj.description : "",
+    rating: productObj.rating ? productObj.rating :"",
+    numReviews: productObj.numReviews ? productObj.numReviews :"",
+    size: productObj.size ? productObj.size :"",
+  });
+
+  console.log(formdata)
+   const url: string =  `https://ecommerce-trading.onrender.com/api/products/update/${productObj._id}`
+  handleUpdateProduct(formdata, url)
 }
 
     //const [classStatus, setClassStatus] = useState("");

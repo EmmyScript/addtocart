@@ -5,12 +5,12 @@ import Cart from "./components/Cart";
 import { ShopContextProvider } from "./shop/ShopContext";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import AdminNav from "./components/AdminDashBoards";
+
 import AdminNavbar from "./components/AdminNavbar";
 import ProductList from "./components/ProductList";
 import UpdateProduct from "./components/UpdateProduct";
 import AdminDashBoards from "./components/AdminDashBoards";
-import Jan from "./components/Jan"
+
 
 const App = () => {
   const isAdmin = true
@@ -42,7 +42,7 @@ const App = () => {
           )}
         </Router>
       </ShopContextProvider>
-      <Jan/>
+      
     </div>
   );
 };

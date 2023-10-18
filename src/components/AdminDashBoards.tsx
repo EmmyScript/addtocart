@@ -1,18 +1,16 @@
 import CartTable from "../cartlist/CartTable"
-import Cart from "./Cart"
-
-
+import Gallery from "../galleryPhoto/Gallery"
 
 
 const AdminDashBoards = () => {
   return (
     <>
     <div className="container-fluid">
-    r
+    
       <div className="admindashboard">
 
-      <Cart/>
-    
+      <CartTable/>
+    <Gallery photo={[]}/>
     
        
     </div>

@@ -56,7 +56,7 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
     console.log(item);
 
     if (isItemInCart(item._id)) {
-
+ 
      const result =  cartItems.map((val:cartObj)=>{
     
         if(val._id === item._id ){
@@ -69,6 +69,10 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
         }
       })
 
+      /* 
+     
+    
+      */
       
 
      return setCartItems(result)
@@ -257,7 +261,7 @@ const handleUpdateProduct = async (data: any) => {
   
   try {
     const result = await axios({
-      url: "https://ecommerce-trading.onrender.com/api/products/update",
+      url: `https://ecommerce-trading.onrender.com/api/products/update/`,
       method: "put",
       data: data,
       headers: {

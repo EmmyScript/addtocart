@@ -25,14 +25,15 @@ function Navbar()  {
   }
   return (
     <>
-      <div className="container-fluid ">
-        <nav className="navbar navbar-expand-md bg-body-tertiary">
-          <div className="container-fluid">
+      <div className="container-fliud ">
+      <nav className="navbar navbar-expand-md bg-body-tertiary">
+      
+          
             <div className="nav">
             {!userData ? 
             <>
             <li className="nav-item d-inline-none">
-                <Link to="/adminnav" className="nav-link"><span><BiSolidDashboard size={17}/></span>
+                <Link to="/admindashboard" className="nav-link"><span><BiSolidDashboard size={17}/></span>
                    Dashboard
                 </Link>
               </li>
@@ -109,9 +110,11 @@ function Navbar()  {
                 </button>
               </form>
             </div>
-          </div>
+          
         </nav>
+        
       </div>
+      
       {/* <SearchInput search={search} /> */}
 
       

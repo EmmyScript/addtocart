@@ -5,7 +5,7 @@ import { UpdateModal } from "./UpdateModal";
 
 
 const UpdateProduct = () =>{
-  const { allProduct, productObj,handleClick,handleDelete } = useContext(ShopContext);
+  const { allProduct, productObj, handleClick,handleDelete } = useContext(ShopContext);
 
 
   const url = "https://ecommerce-trading.onrender.com/api/products/delete"
@@ -17,20 +17,20 @@ const UpdateProduct = () =>{
     <div className="container-fluid">
     <div className="row">
       <div className="col-md-2"></div>
-      <div className="col-md-8">
+      <div className="col-md-8 ">
       <h1 className="updateproductlist text-center"><b>Update Product List </b></h1>
     <table className="table table-responsive">   
       <thead>
         <tr>
-          <th>ProductImage</th>
-          <th>ProductName</th>
-          <th>Price</th>
-          <th>Category</th>
-          <th>Quantity</th>
-          <th>Description</th>
-          <th>numReviews</th>
-          <th>Size</th>
-          <th>Option</th>
+          <th className="table-primary">ProductImage</th>
+          <th className="table-secondary">ProductName</th>
+          <th className="table-info">Price</th>
+          <th className="table-success">Category</th>
+          <th className="table-danger">Quantity</th>
+          <th className="table-cell">Description</th>
+          <th className="table-warning">numReviews</th>
+          <th className="table-dark">Size</th>
+          <th className="table-secondary">Option</th>
         </tr>
       </thead>
     <tbody>
