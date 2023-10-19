@@ -5,7 +5,7 @@ import { UpdateModal } from "./UpdateModal";
 
 
 const UpdateProduct = () =>{
-  const { allProduct, productObj, handleClick,handleDelete } = useContext(ShopContext);
+  const { allProduct,  handleClick,handleDelete } = useContext(ShopContext);
 
 
   const url = "https://ecommerce-trading.onrender.com/api/products/delete"

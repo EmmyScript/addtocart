@@ -1,3 +1,4 @@
+/*
 import { useContext, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import AppInput from "../components/AppInput";
@@ -173,3 +174,4 @@ console.log(prodCategory);
 }
 
 export default PreviewGallery
+*/

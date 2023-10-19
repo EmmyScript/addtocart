@@ -1,6 +1,6 @@
-import  { useContext, useState } from 'react'
+import  { useContext, } from 'react'
 import AppInput from './AppInput'
-import axios from 'axios';
+
 import ProductCategory from './ProductCategory';
 import { FormProvider, useForm } from 'react-hook-form';
 import { ShopContext } from '../shop/ShopContext';
@@ -26,7 +26,7 @@ const formActualData =(data: any) => {
 
   console.log(productObj.productName)
 
-  
+  /*
   const [allValue, setAllValue] = useState({
     productName: productObj.productName ? productObj.productName : "",
     price: productObj.price ? productObj.price : "" ,
@@ -39,6 +39,7 @@ const formActualData =(data: any) => {
     numReviews: productObj.numReviews ? productObj.numReviews :"",
     size: productObj.size ? productObj.size :"",
   });
+  */
 
   console.log(formdata)
    const url: string =  `https://ecommerce-trading.onrender.com/api/products/update/${productObj._id}`

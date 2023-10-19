@@ -1,7 +1,7 @@
 import {photo} from "./types"
 
 import Navigation from "./Navigation"
-import PreviewGallery from "./PreviewGallery"
+
 import TransitionPhoto from "./TransitionPhoto"
 
 interface GalleryImageProps {

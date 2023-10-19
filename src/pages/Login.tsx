@@ -10,7 +10,7 @@ export interface Formdatas {
 }
 
 const Login = () => {
-  const { handleLogin, loading, classStatus } = useContext(ShopContext);
+  const { handleLogin, loading, } = useContext(ShopContext);
 
   const methods = useForm();
 

@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext,  } from "react";
 import { ShopContext } from "../shop/ShopContext";
-import AppInput from "./AppInput";
+
 
 const APICATEGORY = [
   {

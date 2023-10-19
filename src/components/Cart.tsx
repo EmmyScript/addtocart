@@ -5,7 +5,7 @@ import { MdShoppingBasket } from "react-icons/md";
 import { PiHandSwipeRightFill } from "react-icons/pi";
 import { ShopContext } from "../shop/ShopContext";
 import CartTable from "../cartlist/CartTable";
-import UpdateProduct from "./UpdateProduct";
+
 
 
 

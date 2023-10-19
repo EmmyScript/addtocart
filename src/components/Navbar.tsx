@@ -7,7 +7,7 @@ import { BiSolidDashboard } from "react-icons/bi";
 
 
 function Navbar()  {
-  const { cartItems, search } = useContext(ShopContext);
+  const { cartItems,  } = useContext(ShopContext);
   const [userData, setUserData] = useState<any>();
 
   useEffect(() => {
