@@ -9,7 +9,8 @@ interface IType {
   value?: string | number;
   id?: string;
   required: boolean;
-  minLength?:number
+  minLength?:number;
+  
 }
 function AppInput({ label, type, name, required,minLength }: IType) {
   const {

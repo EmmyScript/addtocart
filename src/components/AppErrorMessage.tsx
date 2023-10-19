@@ -5,7 +5,7 @@ function AppErrorMessage({ errors, name,  }: any) {
     <div>
       <>
         {errors[name]?.type === "required" && (
-          <p className="text-danger fs-6">Input field is required</p>
+          <p className="text-white fs-6">Input field is required</p>
         )}
       </>
       { errors[name]?.type === "minLength" && (

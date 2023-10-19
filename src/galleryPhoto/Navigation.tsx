@@ -1,9 +1,11 @@
-
-
 const Navigation = () => {
   return (
-    <div>Navigation</div>
-  )
-}
+    <div className="container">
+      
+    
+      
+    </div>
+  );
+};
 
-export default Navigation
+export default Navigation;

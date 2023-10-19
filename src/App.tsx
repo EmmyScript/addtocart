@@ -13,7 +13,7 @@ import AdminDashBoards from "./components/AdminDashBoards";
 
 
 const App = () => {
-  const isAdmin = true
+  const isAdmin = false
   return (
     <div className="containers">
 
@@ -31,6 +31,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/productlist" element={<ProductList />} />
+
             </Routes>
           ) : (
             <Routes>
@@ -48,3 +49,4 @@ const App = () => {
 };
 
 export default App;
+

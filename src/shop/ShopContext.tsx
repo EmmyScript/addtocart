@@ -70,7 +70,9 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
       })
 
       /* 
-     
+    const addbtocart =(item:cartObj)=>{
+      console.log(item)
+    }
     
       */
       
@@ -191,6 +193,11 @@ const handleCreateProduct = async (data:any, url:string) => {
     setClassStatus("alert alert-danger");
   }
 };
+
+
+
+
+
 
 const handleLogin = async (data:any, url:string) => {
   setLoading(true)
@@ -313,7 +320,8 @@ const handleUpdateProduct = async (data: any) => {
     loading,
     handleLogin,
     handleRegiister,
-    handleUpdateProduct
+    handleUpdateProduct,
+    
 
     
     

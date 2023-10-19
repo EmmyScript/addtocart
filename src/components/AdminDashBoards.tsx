@@ -2,6 +2,7 @@ import CartTable from "../cartlist/CartTable"
 import Gallery from "../galleryPhoto/Gallery"
 
 
+
 const AdminDashBoards = () => {
   return (
     <>
@@ -10,7 +11,11 @@ const AdminDashBoards = () => {
       <div className="admindashboard">
 
       <CartTable/>
-    <Gallery photo={[]}/>
+    <Gallery photos={[ 
+      
+
+
+    ]}/>
     
        
     </div>

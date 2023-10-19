@@ -24,6 +24,8 @@ const Login = () => {
 
   }
 
+  
+
   return (
     <div className="login">
       <div className="container text-white ">
@@ -37,6 +39,7 @@ const Login = () => {
                 role="status"
               >
                 <span className="sr-only">Loading...</span>
+                
               </div>
             )}
             
@@ -48,8 +51,9 @@ const Login = () => {
               </div>
             )} */}
 
+            
             <FormProvider {...methods}>
-              <form onSubmit={methods.handleSubmit(formActualData)}>
+              <form onSubmit= {methods.handleSubmit(formActualData) } >
                 <div className="mb-3">
                   <AppInput
                     type={"email"}
@@ -71,8 +75,8 @@ const Login = () => {
                 </div>
 
                 <div className="mb-3">
-                  <button type="submit" className="btn btn-primary"
-                  >
+                  <button type="submit" name="myButton" className="btn btn-primary'"
+                 >
                     Submit
                   </button>
                 </div>

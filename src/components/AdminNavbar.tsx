@@ -26,8 +26,8 @@ const AdminNavbar = () => {
   return (
     <>
       <div className="container-fluid ">
-        <nav className="navbar navbar-expand-md bg-body-tertiary">
-          <div className="container-fluid">
+        <nav className="navbar navbar-expand-md bg-body-secondary ">
+          
             <div className="nav">
             {!userData ? 
             <>
@@ -119,7 +119,7 @@ const AdminNavbar = () => {
                 </button>
               </form>
             </div>
-          </div>
+          
         </nav>
       </div>
       {/* <SearchInput search={search} /> */}

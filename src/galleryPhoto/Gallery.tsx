@@ -12,9 +12,9 @@ export const Gallery: React.FC<GalleryImageProps> = ({}) => {
   return (
     <div className="gallery">
     <div className="container">
-        <h1>All Gallery</h1>
+      
         <Navigation/>
-        <PreviewGallery/>
+        
         <TransitionPhoto/>
     </div>
     </div>
