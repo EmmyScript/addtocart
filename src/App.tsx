@@ -13,7 +13,7 @@ import AdminDashBoards from "./components/AdminDashBoards";
 
 
 const App = () => {
-  const isAdmin = false
+  const isAdmin = true
   return (
     <div className="containers">
 

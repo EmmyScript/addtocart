@@ -48,6 +48,9 @@ handleCreateProduct(formdata, url)
 console.log(prodCategory);
 
 
+
+  
+
   return (
     <>
       <div className="productlist">
@@ -158,7 +161,7 @@ console.log(prodCategory);
                  
               
                   <div className="col-md-6 mt-2">
-                    <button type="submit" className="btn btn-secondary">
+                    <button type="submit"  id = "submitButton"className="btn btn-secondary">
                       Submit
                     </button>
                     

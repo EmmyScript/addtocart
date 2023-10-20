@@ -17,10 +17,13 @@ const UpdateProduct = () =>{
     <div className="container-fluid">
     <div className="row">
       <div className="col-md-2"></div>
-      <div className="col-md-8  ">
       <h1 className="updateproductlist text-center"><b>Update Product List </b></h1>
+      <div className="col-md-12 bg-info">
+      <div className="table-responsive-sm">
+     
+     
       
-    <table className="table table-responsive">   
+    <table className="table">   
       <thead>
         <tr>
           <th className="table-primary">ProductImage</th>
@@ -67,7 +70,8 @@ const UpdateProduct = () =>{
       </table>
       
       </div>
-    
+      <div className ='col-md-2'></div>
+    </div>
       </div>
       <UpdateModal />
       </div>

@@ -7,13 +7,14 @@ export function CartTable() {
 
   return (
     <>
-      <div className="container">
+      <div className="container-fliud">
         <div className="row">
           <div className="col-md-3"></div>
-          <p className="text-center fs-5 bg-dark text-white">
+          <p className="  text-center fs-5 bg-dark text-white">
             {" "}
             List of Product Selected From Shop
           </p>
+          <div className="table-responsive-sm ">
           <table className="table col-md-6">
             <thead>
               <tr>
@@ -63,7 +64,7 @@ export function CartTable() {
               ))}
             </tbody>
           </table>
-
+</div>
           <div className="col-md-3"></div>
         </div>
       </div>
