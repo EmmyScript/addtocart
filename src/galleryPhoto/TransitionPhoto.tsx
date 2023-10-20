@@ -1,8 +1,10 @@
 
 const TransitionPhoto = () => {
   return (
-    <div>Transition Photo</div>
+    <div></div>
   )
 }
 
 export default TransitionPhoto
+
+// mydashboard.netlify.app
