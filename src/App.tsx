@@ -10,11 +10,11 @@ import AdminNavbar from "./components/AdminNavbar";
 import ProductList from "./components/ProductList";
 import UpdateProduct from "./components/UpdateProduct";
 import AdminDashBoards from "./components/AdminDashBoards";
-import { FaGlasses } from "react-icons/fa";
+
 
 
 const App = () => {
-  const isAdmin = FaGlasses
+  const isAdmin = false
   return (
     <div className="containers">
 
