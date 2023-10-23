@@ -10,11 +10,12 @@ import AdminNavbar from "./components/AdminNavbar";
 import ProductList from "./components/ProductList";
 import UpdateProduct from "./components/UpdateProduct";
 import AdminDashBoards from "./components/AdminDashBoards";
+import { UpdateModal } from "./components/UpdateModal";
 
 
 
 const App = () => {
-  const isAdmin = false
+  const isAdmin = true
   return (
     <div className="containers">
 
@@ -32,6 +33,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/productlist" element={<ProductList />} />
+              <Route path="/update-product/:mydata" element={<UpdateModal />} />
 
             </Routes>
           ) : (

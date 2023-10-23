@@ -37,7 +37,7 @@ const AdminNavbar = () => {
                 </Link>
               </li>
               <li className="nav-item d-inline-none">
-                <Link to="/updateproductlist" className="nav-link">
+                <Link to="/updateproductlist" className="nav-link ">
                   Updateproduct
                 </Link>
               </li>

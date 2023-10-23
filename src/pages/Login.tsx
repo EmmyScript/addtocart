@@ -31,7 +31,7 @@ const Login = () => {
       <div className="container text-white ">
         <div className="row">
           <div className="col-md-3"></div>
-          <div className="col-md-6 bg-dark p-3">
+          <div className="col-md-6  p-3 bg-secondary">
             <h3 className="text-center">Login</h3>
             {loading && (
               <div
@@ -75,7 +75,7 @@ const Login = () => {
                 </div>
 
                 <div className="mb-3">
-                  <button type="submit" name="myButton" className="btn btn-primary'"
+                  <button type="submit"  className="btn btn-primary'"
                  >
                     Submit
                   </button>

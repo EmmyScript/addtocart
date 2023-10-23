@@ -12,7 +12,8 @@ interface IType {
   minLength?:number;
   
 }
-function AppInput({ label, type, name, required,minLength }: IType) {
+function AppInput({ label, type, name, required,minLength,value }: IType) {
+  console.log(value,"value")
   const {
     register,
     formState: { errors },
@@ -29,6 +30,7 @@ function AppInput({ label, type, name, required,minLength }: IType) {
         className="form-control"
         name={name}
         id={name}
+        value={value}
       />
       <AppErrorMessage errors={errors} name={name} required={required} minLength={minLength}/>
     </div>

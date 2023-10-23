@@ -9,7 +9,7 @@ export interface Formdatas {
   onSubmit: any;
 }
 const Register = () => {
-  const { handleRegiister, loading, classStatus } = useContext(ShopContext);
+  const { handleRegiister, loading,  } = useContext(ShopContext);
   const methods = useForm();
   
   const formActualData =(data: any) => {
@@ -34,13 +34,7 @@ const Register = () => {
             <span className="sr-only">Loading...</span>
           </div>
         )}
-        {classStatus !== "" && (
-          <div className={classStatus}>
-            {classStatus.split("-").includes("success")
-              ? "Saved success"
-              : "Not saved"}
-          </div>
-        )}
+        
         
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(formActualData)}>
@@ -110,3 +104,11 @@ const Register = () => {
 };
 
 export default Register;
+
+//{classStatus !== "" && (
+ // <div className={classStatus}>
+  //{classStatus.split("-").includes("success")
+   // ? "Saved success"
+   // : "Not saved"}
+//</div>
+//)}

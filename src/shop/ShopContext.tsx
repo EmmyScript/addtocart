@@ -70,10 +70,24 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
       })
 
       /* 
-    const addbtocart =(item:cartObj)=>{
-      console.log(item)
+  const addtocart =(items:cartObj)=>{
+    connsole.log(items)
+    if(isItemincart(item._id)){
+      const rresult = items.map((vall:cartObj)=>({
+        if(item.id===val.id){
+          return{
+...val,qtty:val.qtty+1
+          }
+          
+        }else{
+          retun val
+        }
+      })
+      retrn setcartitem(resut)
+    }else{
+      re
     }
-    
+  }
       */
       
 
@@ -258,10 +272,21 @@ const handleRegiister= async (data:any, url:string) => {
     }
     console.log(result)
     setClassStatus("alert alert-success");
-  } catch (err) {
+  } catch (err: any) {
     setClassStatus("alert alert-danger");
-    setLoading(false)
+    console.log(err.response.data.error)
+    
   }
+  setLoading(false)
+
+  
+  {classStatus !== "" && (
+    <div className={classStatus}>
+      {classStatus.split("-").includes("success")
+        ? "Saved success"
+        : "not save"}
+    </div>
+  )}
 };
 
 const handleUpdateProduct = async (data: any) => {
@@ -303,7 +328,6 @@ const handleUpdateProduct = async (data: any) => {
     reduceFromCart,
     handleSize,
     sizes,
-    handleClick,
     productObj,
     handleCategorys,
     category,
