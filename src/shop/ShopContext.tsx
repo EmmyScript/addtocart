@@ -69,25 +69,27 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
         }
       })
 
-      /* 
-  const addtocart =(items:cartObj)=>{
-    connsole.log(items)
-    if(isItemincart(item._id)){
-      const rresult = items.map((vall:cartObj)=>({
-        if(item.id===val.id){
-          return{
-...val,qtty:val.qtty+1
-          }
+      /*
+      const addtocart = (items:cartOBJ)=>{
+        console.log(items)
+        if(isitemsincart(item._id)){
+          const result = cartitems.map(val:cartObj) ={}
+            if(val._id === item._id){
+              return{
+                ...val,qtty: val.qtty +1
+              }
+            }else {
+              return val
+            }
+          })
+          return cartitem(reuslt)
           
-        }else{
-          retun val
+        }else {
+         return  setcartitems([...cartitem,qtty{...val,qtty : items.qtty}])
         }
-      })
-      retrn setcartitem(resut)
-    }else{
-      re
-    }
-  }
+
+      }
+
       */
       
 
