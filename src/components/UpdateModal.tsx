@@ -5,13 +5,13 @@ import ProductCategory from "./ProductCategory";
 import { FormProvider, useForm } from "react-hook-form";
 import { ShopContext } from "../shop/ShopContext";
 import { Button, Modal } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+
 
 export const UpdateModal = ({ tableData, showModal, setShowModal }: any) => {
   const { handleUpdateProduct, classStatus } = useContext(ShopContext);
 
   
-  const [allValue, setAllValue] = useState({
+  const [] = useState({
     productName: tableData?.productName? tableData?.productName : "",
     price: tableData?.price ? tableData?.price : "",
     productImage: tableData?.productImage ? tableData?.productImage : "",
@@ -41,7 +41,7 @@ export const UpdateModal = ({ tableData, showModal, setShowModal }: any) => {
       size: data.size,
     };
 
-    const  {id} = useParams();
+    
 
     console.log(formdata);
     const url: string = `https://ecommerce-trading.onrender.com/api/products/update/${tableData._id}`;
