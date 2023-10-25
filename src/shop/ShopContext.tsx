@@ -27,7 +27,7 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
   const[prodCategory, setProdCategory]= useState<string>("")
   const[selectitems, setSelectItems] = useState<string>("")
   const [allProduct, setAllProduct] = useState([])
-  const[productObj, setProductObj] = useState({})
+  const[productObj, ] = useState({})
 
   const [classStatus, setClassStatus] = useState("")
   const [loading,setLoading] = useState(false)
@@ -85,7 +85,7 @@ export const ShopContextProvider = ({children}:{children:React.ReactNode}) => {
           return cartitem(reuslt)
           
         }else {
-         return  setcartitems([...cartitem,qtty{...val,qtty : items.qtty}])
+         return  setcartitems([...cartitem,qtty{...val,qtty : items.qtty}])  
         }
 
       }
@@ -168,9 +168,9 @@ useEffect(()=>{
 },[])
 
 
-const handleClick = (valObj:any)=>{
-  setProductObj(valObj)
-}
+//const handleClick = (valObj:any)=>{
+  //setProductObj(valObj)
+//}
 
 const handleDelete = async (url:string,id:any) =>{
   if(id && window.confirm("Are sure you want to delete this item ?")){

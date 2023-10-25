@@ -1,25 +1,27 @@
 import { useContext, useState } from "react";
 import { ShopContext } from "../shop/ShopContext";
 import { UpdateModal } from "./UpdateModal";
-import { useNavigation, useParams } from "react-router-dom";
+//import { useNavigation, useParams } from "react-router-dom";
 
 const UpdateProduct = () => {
   const { allProduct, handleDelete, loading } = useContext(ShopContext);
-  const [tableData, setTableData] = useState();
+  const [tableData, ] = useState();
   const [showModal, setShowModal] = useState(false);
 
-  const mydata = useParams();
+  
   const url = "https://ecommerce-trading.onrender.com/api/products/delete";
 
+  /*
   const handleUpdate = (mydata: any) => {
     
     setTableData(mydata);
     setShowModal(true);
   };
+  */
 
   // console.log(tableData)
 
-  const navigate = useNavigation()
+
 
   return (
     <div className="container-fluid">
@@ -66,7 +68,7 @@ const UpdateProduct = () => {
                     <td className="d-flex justify-content-between md-sm">
                       <button
                         className="btn btn-primary"
-                        onClick={() => navigate(``)}
+                        
                       >
                         Update
                       </button> 

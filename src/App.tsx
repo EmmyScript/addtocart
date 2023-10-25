@@ -15,7 +15,7 @@ import { UpdateModal } from "./components/UpdateModal";
 
 
 const App = () => {
-  const isAdmin = true
+  const isAdmin = false
   return (
     <div className="containers">
 
